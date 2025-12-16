@@ -42,12 +42,11 @@ public class JeuDeLaVie {
         }
     }
 
-    // Compte les voisins vivants autour d'une case (x, y)
     private int countNeighbors(int x, int y) {
         int count = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                if (i == 0 && j == 0) continue; // On ne compte pas la cellule elle-même
+                if (i == 0 && j == 0) continue;
 
                 int r = x + i;
                 int c = y + j;
@@ -63,10 +62,9 @@ public class JeuDeLaVie {
     }
 
     public void display() {
-        System.out.print("\033[H\033[2J"); 
         System.out.flush();
 
-        System.out.println("--- G E N E R A T I O N ---");
+        System.out.println("--- GENERATION---");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.print(grid[i][j].toString());

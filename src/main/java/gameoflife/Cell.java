@@ -16,6 +16,6 @@ public class Cell {
 
     @Override
     public String toString() {
-        return isAlive ? "■ " : ". ";
+        return isAlive ? "x " : ". ";
     }
 }
