@@ -1,4 +1,5 @@
 package gameoflife;
+
 import java.util.Random;
 
 public class JeuDeLaVie {
@@ -14,10 +15,23 @@ public class JeuDeLaVie {
         Random random = new Random();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                boolean startAlive = random.nextDouble() < 0.2; 
+                boolean startAlive = random.nextDouble() < 0.2;
                 grid[i][j] = new Cell(startAlive);
             }
         }
+    }
+
+    public void setCellState(int x, int y, boolean alive) {
+        if (x >= 0 && x < size && y >= 0 && y < size) {
+            grid[x][y].setAlive(alive);
+        }
+    }
+
+    public boolean getCellState(int x, int y) {
+        if (x >= 0 && x < size && y >= 0 && y < size) {
+            return grid[x][y].isAlive();
+        }
+        return false;
     }
 
     public void update() {
@@ -46,7 +60,8 @@ public class JeuDeLaVie {
         int count = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                if (i == 0 && j == 0) continue;
+                if (i == 0 && j == 0)
+                    continue;
 
                 int r = x + i;
                 int c = y + j;
@@ -75,12 +90,12 @@ public class JeuDeLaVie {
 
     public static void main(String[] args) {
         JeuDeLaVie jeu = new JeuDeLaVie();
-        
+
         try {
             while (true) {
                 jeu.display();
                 jeu.update();
-                Thread.sleep(500); 
+                Thread.sleep(500);
             }
         } catch (InterruptedException e) {
             System.out.println("Jeu interrompu.");
